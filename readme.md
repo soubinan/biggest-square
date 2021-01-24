@@ -58,17 +58,19 @@
 ..o.......o................
 ```
 
-%>/!\ C’est bien un carré. Même si cela n’y ressemble pas visuellement• 
+%>/!\ C’est bien un carré. Même si cela n’y ressemble pas visuellement
 
 ## Générateur de plateaux
 
-* Tu trouveras ci-joint un générateur de plateaux (map_gen.py) en python3 prenant trois paramètres
-  * nombres de colonnes ;
-  * nombres de lignes ;
-  * densité des obstacles.• Consignes :
+Tu trouveras ci-joint un générateur de plateaux (map_gen.py) en python3 prenant trois paramètres
 
-**Exercice à réaliser en python 3**
+* nombres de colonnes
+* nombres de lignes
+* densité des obstacles
 
+## Consignes
+
+* Exercice à réaliser en python 3
 * Uniquement la librairie standard python est autorisé.
 * Le programme peut prendre de 1 à N fichiers en paramètre.
-* A rendre sur github.
+* A rendre sur github
