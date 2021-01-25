@@ -61,28 +61,28 @@ class TestMapValidation(unittest.TestCase):
         self.assertEqual(self.map_19.validate_map(), True)
 
 
-    def test_get_maximum_possible_size(self):
-        self.assertEqual(self.map_01.get_maximum_possible_size, 0)
-        self.assertEqual(self.map_02.get_maximum_possible_size, 0)
-        self.assertEqual(self.map_03.get_maximum_possible_size, 0)
-        self.assertEqual(self.map_04.get_maximum_possible_size, 0)
-        self.assertEqual(self.map_05.get_maximum_possible_size, 0)
-        self.assertEqual(self.map_06.get_maximum_possible_size, 0)
+    def test_detect_biggest_square(self):
+        self.assertEqual(self.map_01.detect_biggest_square(), None)
+        self.assertEqual(self.map_02.detect_biggest_square(), None)
+        self.assertEqual(self.map_03.detect_biggest_square(), None)
+        self.assertEqual(self.map_04.detect_biggest_square(), None)
+        self.assertEqual(self.map_05.detect_biggest_square(), None)
+        self.assertEqual(self.map_06.detect_biggest_square(), None)
 
-        self.assertEqual(self.map_07.get_maximum_possible_size, 8)
-        self.assertEqual(self.map_08.get_maximum_possible_size, 2)
-        self.assertEqual(self.map_09.get_maximum_possible_size, 1)
+        self.assertEqual(self.map_07.detect_biggest_square(), (8, 7, 7))
+        self.assertEqual(self.map_08.detect_biggest_square(), (1, 1, 1))
+        self.assertEqual(self.map_09.detect_biggest_square(), (1, 0, 0))
 
-        self.assertEqual(self.map_10.get_maximum_possible_size, 10)
-        self.assertEqual(self.map_11.get_maximum_possible_size, 10)
-        self.assertEqual(self.map_12.get_maximum_possible_size, 10)
+        self.assertEqual(self.map_10.detect_biggest_square(), (6, 9, 9))
+        self.assertEqual(self.map_11.detect_biggest_square(), (3, 4, 4))
+        self.assertEqual(self.map_12.detect_biggest_square(), (6, 9, 7))
 
-        self.assertEqual(self.map_13.get_maximum_possible_size, 9)
-        self.assertEqual(self.map_14.get_maximum_possible_size, 8)
-        self.assertEqual(self.map_15.get_maximum_possible_size, 9)
-        self.assertEqual(self.map_16.get_maximum_possible_size, 10)
-        self.assertEqual(self.map_17.get_maximum_possible_size, 10)
-        self.assertEqual(self.map_18.get_maximum_possible_size, 10)
+        self.assertEqual(self.map_13.detect_biggest_square(), (2, 1, 1))
+        self.assertEqual(self.map_14.detect_biggest_square(), (2, 5, 4))
+        self.assertEqual(self.map_15.detect_biggest_square(), (1, 1, 3))
+        self.assertEqual(self.map_16.detect_biggest_square(), (1, 1, 3))
+        self.assertEqual(self.map_17.detect_biggest_square(), (1, 1, 3))
+        self.assertEqual(self.map_18.detect_biggest_square(), (1, 1, 3))
 
-        self.assertEqual(self.map_19.get_maximum_possible_size, 9)
+        self.assertEqual(self.map_19.detect_biggest_square(), (7, 6, 11))
 
