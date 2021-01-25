@@ -88,6 +88,52 @@ class Map:
         return is_valid
 
 
+    def print_map(self):
+        if self.validate_map():
+            printable = ''
+
+            for line in self._content:
+                printable += line
+            print(printable)
+            return printable
+
+
+    def detect_biggest_square(self):
+        if self.validate_map():
+            rows_number = len(self._content)
+            columns_number = len(self._content[0][:-1])
+
+            size_map = [[0 for m in range(columns_number)] \
+                for n in range(rows_number)]
+
+            # Detect the biggest size possible
+            for i in range(rows_number): 
+                for j in range(columns_number): 
+                    if (self._content[i][j] == self._empty_symbol): 
+                        size_map[i][j] = min(
+                            size_map[i][j-1], 
+                            size_map[i-1][j], 
+                            size_map[i-1][j-1]
+                            ) + 1
+                    else: 
+                        size_map[i][j] = 0
+
+            maximums = list(max(row) for row in size_map)
+            max_of_max = max(maximums)
+            max_row = maximums.index(max_of_max)
+            max_column = size_map[max_row].index(max_of_max)
+
+            return max_of_max, max_row, max_column # Size, End row, End Column
+
+
+    def fill_map(self):
+        # Print original
+        
+        pass
+
+
 if __name__ == '__main__':
-    m = Map('./tests/samples/bad-4')
+    m = Map('./tests/samples/exercise-test-input')
     m.validate_map()
+    m.print_map()
+    m.detect_biggest_square()
