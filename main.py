@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 
 import os
+import sys
 import logging
-
+import argparse
+import pprint
 
 # Logging definition
 handler = logging.StreamHandler()
@@ -123,11 +125,13 @@ class Map:
 
 
     def fill_map(self):
-        if self.validate_map(verbose=False):
+        if self.validate_map():
             size, end_row, end_col = self.detect_biggest_square()
             start_row = end_row + 1 - size
             start_col = end_col + 1 - size
             transformation = []
+            print('\n\n')
+            print('-------Input')
             self.print_map()
 
             for i, row in enumerate(self._content):
@@ -136,11 +140,24 @@ class Map:
                     transformation[i][start_col:end_col+1] = self._filled_symbol * size
 
             result = [''.join(t) for t in transformation]
+            print('-------Output')
             self.print_map(result)
 
             return result
 
 
+def cli():
+    processing_queue = []
+
+    if len(sys.argv) > 1:
+        processing_queue = sys.argv[1:]
+    else:
+        for root, _, files in os.walk(os.path.abspath("./tests/samples/")):
+            for file in files:
+                processing_queue.append(os.path.join(root, file))
+
+    for entry in processing_queue:
+        Map(entry).fill_map()
+
 if __name__ == '__main__':
-    m = Map('./tests/samples/hard-6')
-    m.fill_map()
+    cli()
