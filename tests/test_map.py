@@ -36,29 +36,29 @@ class TestMapValidation(unittest.TestCase):
 
 
     def test_validate_map(self):
-        self.assertEqual(self.map_01.validate_map, False)
-        self.assertEqual(self.map_02.validate_map, False)
-        self.assertEqual(self.map_03.validate_map, False)
-        self.assertEqual(self.map_04.validate_map, False)
-        self.assertEqual(self.map_05.validate_map, False)
-        self.assertEqual(self.map_06.validate_map, False)
+        self.assertEqual(self.map_01.validate_map(), False)
+        self.assertEqual(self.map_02.validate_map(), False)
+        self.assertEqual(self.map_03.validate_map(), False)
+        self.assertEqual(self.map_04.validate_map(), False)
+        self.assertEqual(self.map_05.validate_map(), False)
+        self.assertEqual(self.map_06.validate_map(), False)
 
-        self.assertEqual(self.map_07.validate_map, True)
-        self.assertEqual(self.map_08.validate_map, True)
-        self.assertEqual(self.map_09.validate_map, True)
+        self.assertEqual(self.map_07.validate_map(), True)
+        self.assertEqual(self.map_08.validate_map(), True)
+        self.assertEqual(self.map_09.validate_map(), True)
 
-        self.assertEqual(self.map_10.validate_map, True)
-        self.assertEqual(self.map_11.validate_map, True)
-        self.assertEqual(self.map_12.validate_map, True)
+        self.assertEqual(self.map_10.validate_map(), True)
+        self.assertEqual(self.map_11.validate_map(), True)
+        self.assertEqual(self.map_12.validate_map(), True)
 
-        self.assertEqual(self.map_13.validate_map, True)
-        self.assertEqual(self.map_14.validate_map, True)
-        self.assertEqual(self.map_15.validate_map, True)
-        self.assertEqual(self.map_16.validate_map, True)
-        self.assertEqual(self.map_17.validate_map, True)
-        self.assertEqual(self.map_18.validate_map, True)
+        self.assertEqual(self.map_13.validate_map(), True)
+        self.assertEqual(self.map_14.validate_map(), True)
+        self.assertEqual(self.map_15.validate_map(), True)
+        self.assertEqual(self.map_16.validate_map(), True)
+        self.assertEqual(self.map_17.validate_map(), True)
+        self.assertEqual(self.map_18.validate_map(), True)
 
-        self.assertEqual(self.map_19.validate_map, True)
+        self.assertEqual(self.map_19.validate_map(), True)
 
 
     def test_get_maximum_possible_size(self):
