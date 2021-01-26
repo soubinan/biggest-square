@@ -1,6 +1,6 @@
 # Test du grand carré
 
-## Descrtion
+## Description
 
 Webservice exposé sur le port 8080 avec les endpoints suivants:
 
