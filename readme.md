@@ -6,6 +6,8 @@ Webservice exposé sur le port 8080 avec les endpoints suivants:
 
 * /: endpoint de base.
 
+* /default: endpoint permettant de jouer les example de test.
+
 * /gen: utlise le generateur pour jouer de nouvelles cartes.
 possibilité d'utiliser 1 à N fichier. Example d'uitlisation via le werbservice:
 
