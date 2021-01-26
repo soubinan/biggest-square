@@ -134,7 +134,7 @@ class Map:
             start_col = end_col + 1 - size
             transformation = []
             print('\n')
-            print('-------Input')
+            print('-------Input:', self.lines[0])
             self.print_map()
 
             for i, row in enumerate(self._content):
