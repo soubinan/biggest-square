@@ -25,14 +25,6 @@ possibilité d'utiliser 1 à N fichier. Example d'uitlisation via le werbservice
 
 ---
 
-## Recommandations
-
-1. Ecrire la fonctionnalité demandée
-2. Ecrire des tests unitaire
-3. Ecrire des tests fonctionnels (appel du Web Service, vérification de la réponse)
-4. Ecrire un Dockerfile qui lance le serveur Python
-5. Lancer les tests en automatiques avec github action :  
-
 ## Le plus grand carré
 
 * Il s’agit de trouver le plus grand carré possible sur un plateau en évitant des obstacles
