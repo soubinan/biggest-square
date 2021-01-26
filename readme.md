@@ -1,5 +1,28 @@
 # Test du grand carré
 
+## Descrtion
+
+Webservice exposé sur le port 8080 avec les endpoints suivants:
+
+* /: endpoint de base.
+
+* /gen: utlise le generateur pour jouer de nouvelles cartes.
+possibilité d'utiliser 1 à N fichier. Example d'uitlisation via le werbservice:
+
+```url
+/gen?map1=4-4-2&map2=20-15-20...mapN=4-5-2
+```
+
+### règle sur les arguments
+
+* Les noms de clé doivent contenir map.
+
+* N1-N2-N3 correspondent à nb de colonnes, nb de lignes et densité.
+
+* /default: utilise des fichiers de test
+
+---
+
 ## Recommandations
 
 1. Ecrire la fonctionnalité demandée

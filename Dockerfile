@@ -1,9 +1,9 @@
 FROM python:3.9
 
-
-COPY . /opt/app
 WORKDIR /opt/app
 
-EXPOSE 8080
+COPY . .
+
+EXPOSE 8000
 
 CMD [ "python", "app.py" ]
