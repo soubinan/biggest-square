@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from io import StringIO
 import os
 import sys
 import logging
-import argparse
-import pprint
+
+from map_gen import map_gen
 
 # Logging definition
 handler = logging.StreamHandler()
@@ -17,31 +18,33 @@ logger.addHandler(handler)
 
 
 class Map:
-    def __init__(self, map_file_path=''):
-        self.location = map_file_path
+    def __init__(self, input=''):
+        self.parsed = True if isinstance(input, list) else False
+        self.lines = input
         self._empty_symbol = ''
         self._obstacle_symbol = ''
         self._filled_symbol = ''
         self._content = []
 
         try:
-            with open(self.location) as f:
-                lines = f.readlines()
+            if not self.parsed:
+                with open(input, encoding="utf8", errors='ignore') as f:
+                    self.lines = f.readlines()
 
-                if len(lines) >= 2:
-                    firs_line = lines[0] # First line
-                    content_lines = lines[1:] # Ignore the last line
+            if len(self.lines) >= 2:
+                firs_line = self.lines[0] # First line
+                content_lines = self.lines[1:] # Ignore the last line
 
-                    try:
-                        *_, \
-                            self._empty_symbol, \
-                                self._obstacle_symbol, \
-                                    self._filled_symbol, _ = firs_line
-                    except (TypeError) as e:
-                        pass
+                try:
+                    *_, \
+                        self._empty_symbol, \
+                            self._obstacle_symbol, \
+                                self._filled_symbol, _ = firs_line
+                except (TypeError, ValueError) as e:
+                    pass
 
-                    for line in content_lines:
-                        self._content.append(line)
+                for line in content_lines:
+                    self._content.append(line)
 
         except FileNotFoundError as e:
             logger.critical(f'Error: {e}')
@@ -130,7 +133,7 @@ class Map:
             start_row = end_row + 1 - size
             start_col = end_col + 1 - size
             transformation = []
-            print('\n\n')
+            print('\n')
             print('-------Input')
             self.print_map()
 
@@ -146,18 +149,44 @@ class Map:
             return result
 
 
-def cli():
+# Context manager to capture stdout from any function in a list
+class Capturing(list):
+    def __enter__(self):
+        self._stdout = sys.stdout
+        sys.stdout = self._stringio = StringIO()
+        return self
+    def __exit__(self, *args):
+        self.extend(self._stringio.getvalue().splitlines())
+        del self._stringio
+        sys.stdout = self._stdout
+
+
+def generate_map_file(column_number=0, row_number=0, density=0):
+    with Capturing() as output:
+        map_gen(column_number, row_number, density)
+
+    return list(l + '\n' for l in output)
+
+
+def run(arg=None):
+
+    if arg:
+        return Map(arg).fill_map()
+
     processing_queue = []
 
     if len(sys.argv) > 1:
         processing_queue = sys.argv[1:]
     else:
-        for root, _, files in os.walk(os.path.abspath("./tests/samples/")):
+        for root, _, files in os.walk(os.path.abspath('./tests/samples/')):
             for file in files:
                 processing_queue.append(os.path.join(root, file))
 
     for entry in processing_queue:
         Map(entry).fill_map()
 
+
 if __name__ == '__main__':
-    cli()
+    m = generate_map_file(5,4,2)
+    print(m)
+    # run(m)
