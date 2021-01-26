@@ -127,5 +127,5 @@ if __name__ == '__main__':
     dispatcher.register('GET', '/', on_get_input)
     dispatcher.register('GET', '/default', on_get_default)
     dispatcher.register('GET', '/gen', on_get_generated)
-    httpd = make_server('localhost', 8080, dispatcher)
+    httpd = make_server('0.0.0.0', 8080, dispatcher)
     httpd.serve_forever()
