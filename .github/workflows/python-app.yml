@@ -26,4 +26,4 @@ jobs:
         python-version: 3.9
 
     - name: UnitTest
-      run: python -m unittest  ./tests/test_map.py
+      run: python -m unittest tests/test_map.py
