@@ -187,6 +187,4 @@ def run(arg=None):
 
 
 if __name__ == '__main__':
-    m = generate_map_file(5,4,2)
-    print(m)
-    # run(m)
+    run()
