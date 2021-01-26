@@ -2,9 +2,40 @@
 
 ## Description
 
-Webservice exposé sur le port 8080 avec les endpoints suivants:
+Le fichier main.py contient l''essentiel de la solution.
+Il peut être utilisé de la façcon suivante:
 
-* /: endpoint de base.
+```bash
+python main.py file1 file2 ... fileN
+```
+
+### Tests
+
+Tests Unitaires disponibles avec unittest
+
+```bash
+python -m unittest discover -s tests
+```
+
+### Webserrvice
+
+Un webservice associé est exposé sur le port 8080 avec les endpoints suivants:
+
+Il peut être initialisé via la commande:
+
+```bash
+python app.py
+```
+
+ou en initialisant à partir du Dockerfile fourni:
+
+```bash
+docker build --tag biggest-square .
+
+docker run  -tid --name bg-container -p 8080:8080 biggest-square
+```
+
+#### Les endpoints disponibles
 
 * /default: endpoint permettant de jouer les example de test.
 
@@ -15,7 +46,7 @@ possibilité d'utiliser 1 à N fichier. Example d'uitlisation via le werbservice
 /gen?map1=4-4-2&map2=20-15-20...mapN=4-5-2
 ```
 
-### règle sur les arguments
+#### règle sur les arguments
 
 * Les noms de clé doivent contenir map.
 
